@@ -21,13 +21,18 @@ public class employeewage {
             System.out.println("Employee is Absent");
         }else{
             System.out.println("Employee is present");
-            System.out.println(emptype);
-            if(emptype == 0){
-                System.out.println("Part Time Employee");
-                total_wage =WAGE_PER_HR * PART_TIME_HR;
-            }else {
-                System.out.println("Full Time Employee");
-                total_wage =WAGE_PER_HR * FULL_TIME_HR;
+            //UC-4-Change Code if else To switch case for clarity
+            switch (emptype) {
+                case 0:
+                    System.out.println("Part Time Employee");
+                    total_wage = WAGE_PER_HR * PART_TIME_HR;
+                    break;
+                case -1:
+                case 1:
+                    System.out.println("Full Time Employee");
+                    total_wage = WAGE_PER_HR * FULL_TIME_HR;
+                    break;
+
             }
         }
         System.out.println("Employee  Wage="+total_wage);
