@@ -12,29 +12,33 @@ public class employeewage {
         final int PART_TIME_HR = 4;
         int total_wage = 0;
         Random random = new Random();
-        //UC-3-checking Employee Absent Or Present
-        int emptype = random.nextInt()%2;
-        // UC- 1 Check Employee is Absent Ro Present
-        int empAtenddence = random.nextInt()%2;
-        System.out.println(empAtenddence);
-        if(empAtenddence == 0){
+        // 20 Working Day in A Moth
+        for (int i = 1;i < 20;i++){
+            System.out.println("day"+i);
+            //UC-3-checking Employee Absent Or Present
+            int emptype = random.nextInt()%2;
+            // UC- 1 Check Employee is Absent Ro Present
+            int empAtenddence = random.nextInt()%2;
+            System.out.println(empAtenddence);
+            if(empAtenddence == 0){
             System.out.println("Employee is Absent");
-        }else{
-            System.out.println("Employee is present");
-            //UC-4-Change Code if else To switch case for clarity
-            switch (emptype) {
-                case 0:
-                    System.out.println("Part Time Employee");
-                    total_wage = WAGE_PER_HR * PART_TIME_HR;
-                    break;
-                case -1:
-                case 1:
-                    System.out.println("Full Time Employee");
-                    total_wage = WAGE_PER_HR * FULL_TIME_HR;
-                    break;
-
+            total_wage=0;
+            }else {
+                System.out.println("Employee is present");
+                //UC-4-Change Code if else To switch case for clarity
+                switch (emptype) {
+                    case 0:
+                        System.out.println("Part Time Employee");
+                        total_wage = WAGE_PER_HR * PART_TIME_HR;
+                        break;
+                    case -1:
+                    case 1:
+                        System.out.println("Full Time Employee");
+                        total_wage = WAGE_PER_HR * FULL_TIME_HR;
+                        break;
+                }
             }
+            System.out.println("Employee  Wage="+total_wage);
         }
-        System.out.println("Employee  Wage="+total_wage);
     }
 }
