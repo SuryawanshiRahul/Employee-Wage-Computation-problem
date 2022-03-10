@@ -7,38 +7,40 @@ public class employeewage {
         //Displaying Welcome to Employee Wage Computation
         System.out.println("welcome to Employee Wage calculation problem ");
         //UC-2 calculate daily Wage
-        final int WAGE_PER_HR = 20;
-        final int FULL_TIME_HR = 8;
-        final int PART_TIME_HR = 4;
-        int total_wage = 0;
+        int total_working_hr = 0;
+        int total_working_day =0;
         Random random = new Random();
-        // 20 Working Day in A Moth
-        for (int i = 1;i < 20;i++){
-            System.out.println("day"+i);
+        //UC-5- 20 Working Day in A Moth
+        //UC-6- Adding 100 Working HRS
+        while (total_working_hr <= Constants.TOTAL_WORKING_HR &&total_working_day < Constants.WORKING_DAYS){
+            int total_wage = 0;
+            total_working_day ++;
+            System.out.println("day"+total_working_day);
             //UC-3-checking Employee Absent Or Present
             int emptype = random.nextInt()%2;
             // UC- 1 Check Employee is Absent Ro Present
             int empAtenddence = random.nextInt()%2;
-            System.out.println(empAtenddence);
-            if(empAtenddence == 0){
+            if(empAtenddence == Constants.IS_ABSENT){
             System.out.println("Employee is Absent");
             total_wage=0;
             }else {
                 System.out.println("Employee is present");
                 //UC-4-Change Code if else To switch case for clarity
                 switch (emptype) {
-                    case 0:
+                    case Constants.IS_PRAT_TIME:
                         System.out.println("Part Time Employee");
-                        total_wage = WAGE_PER_HR * PART_TIME_HR;
+                        total_wage = Constants.WAGE_PER_HR * Constants.PART_TIME_HR;
+                        total_working_hr = total_working_hr + Constants.PART_TIME_HR;
                         break;
-                    case -1:
-                    case 1:
+                    case Constants.IS_FULL_TIME:
                         System.out.println("Full Time Employee");
-                        total_wage = WAGE_PER_HR * FULL_TIME_HR;
+                        total_wage = Constants.WAGE_PER_HR * Constants.FULL_TIME_HR;
+                        total_working_hr = total_working_hr + Constants.FULL_TIME_HR;
                         break;
                 }
             }
             System.out.println("Employee  Wage="+total_wage);
+            System.out.println("Total working HRS="+ total_working_hr);
         }
     }
 }
